@@ -4,6 +4,7 @@
 Uso:  python3 build.py            (valida e gera)
       python3 build.py --sem-validar
 """
+import hashlib
 import html
 import json
 import re
@@ -217,6 +218,7 @@ footer.pe a{color:var(--foott)}footer.pe strong{font:600 1.2rem var(--fh);color:
 @media print{header.top,footer.pe,.hero-art,.banner{display:none}body{background:#fff;color:#000}}
 """
 
+CSS_V = hashlib.md5(CSS.encode("utf-8")).hexdigest()[:8]  # muda quando o visual muda: o navegador não usa CSS velho
 JS_TEMA = ""  # tema segue o sistema; sem JavaScript
 
 
@@ -261,7 +263,7 @@ def pagina(titulo, desc, corpo, rel, url_rel, ativo="", og_tipo="website", jsonl
 <meta name="color-scheme" content="light dark">
 <link rel="alternate" type="application/rss+xml" title="{esc(nome)}" href="{rel}feed.xml">
 <link rel="preload" href="{rel}fontes/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{rel}estilo.css">
+<link rel="stylesheet" href="{rel}estilo.css?v={CSS_V}">
 {ld}
 {analytics_html()}
 </head>
