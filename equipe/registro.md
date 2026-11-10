@@ -1,5 +1,6 @@
 # Registro de trabalho
 
+- 2026-11-10 | Conferente | Segunda conferência de mar-salgado (já publicado por outra execução): reabertas USGS e WHOI; único ajuste, a frase dos vulcões submarinos agora diz o que o USGS diz (a água do mar reage com rocha quente e dissolve minerais). Sem rascunhos pendentes; reconferência de artigos não necessária (nenhum com mais de 90 dias).
 Uma linha por evento, mais novo em cima: data, quem (Claude, Redator, Conferente), o que fez, o que sobrou.
 
 - 2026-11-10 | Conferente | Publicou mar-salgado após correções: 'cloro' virou 'cloreto' e a não-retirada pelos organismos agora cita a WHOI (o USGS não diz isso); tirei 'entra por rachaduras... antes de voltar a subir' e 'isso impede rios de ficarem salgados', que as fontes não dizem assim. Os dois números descartados na escrita (500 pés/166 m e o Mar Cáspio) continuam fora do texto; o USGS cita os 500 pés, mas a conversão correta seria ~152 m, então não entrou. luz-do-sol segue reprovado (NASA não abriu).

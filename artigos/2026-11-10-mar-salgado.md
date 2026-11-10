@@ -21,7 +21,7 @@ Segundo o serviço geológico dos Estados Unidos (USGS), o sal do oceano vem de 
 
 ### O que mais coloca sal no mar
 
-O fundo do oceano também contribui. Nas fontes hidrotermais do fundo do mar, a água do mar que se infiltra nas rochas da crosta fica mais quente e dissolve parte dos minerais. Segundo o USGS, vulcões no fundo do mar também liberam minerais na água. [1]
+O fundo do oceano também contribui. Nas fontes hidrotermais do fundo do mar, a água do mar que se infiltra nas rochas da crosta fica mais quente e dissolve parte dos minerais. Segundo o USGS, as erupções vulcânicas no fundo do mar também acrescentam sais: como nas fontes hidrotermais, a água do mar reage com rocha quente e dissolve parte dos minerais. [1]
 
 ### Qual sal fica e qual sai
 
