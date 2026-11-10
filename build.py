@@ -14,6 +14,8 @@ from datetime import date
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent
+sys.path.insert(0, str(RAIZ))
+import visual  # noqa: E402
 SAIDA = RAIZ / "docs"
 CFG = json.loads((RAIZ / "site.json").read_text(encoding="utf-8"))
 MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro",
@@ -129,49 +131,90 @@ def corpo_html(meta):
 
 # ---------- modelo de página ----------
 CSS = """
-:root{--bg:#fbf7ef;--card:#ffffff;--tx:#1c2430;--mu:#566170;--ln:#e4dccb;--ac:#0b6e6e;--acb:#d8f0ec;--hl:#e0a800;--hlb:#fff3c4;--lk:#0a5f9e;--on:#ffffff;
- --fh:"Trebuchet MS","Segoe UI",system-ui,-apple-system,sans-serif;--fb:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif}
-@media(prefers-color-scheme:dark){:root{--bg:#101a1c;--card:#172427;--tx:#e9f0ef;--mu:#a2b4b3;--ln:#2a3b3e;--ac:#5fd0c2;--acb:#173c38;--hl:#f6c945;--hlb:#3b3210;--lk:#8ccbf5;--on:#0d1311;color-scheme:dark}}
+@font-face{font-family:"Fraunces";src:url(fontes/fraunces-600.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+:root{--bg:#fffaf1;--card:#ffffff;--tx:#1d2540;--mu:#59637c;--ln:#eadfc9;--ac:#0f766e;--acb:#d7f3ee;--hl:#f5a524;--hl2:#f7cf7a;--hlb:#fff3d1;--pu:#7c3aed;--pub:#f0e9ff;--lk:#1d4ed8;--on:#ffffff;
+ --hero1:#ffeec4;--hero2:#ffd5cf;--foot:#1d2540;--foott:#d9e0f5;--sh:rgba(29,37,64,.32);
+ --fh:"Fraunces","Iowan Old Style",Georgia,serif;--fu:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1626;--card:#172038;--tx:#eaf0ff;--mu:#a9b6d6;--ln:#2b3857;--ac:#5eead4;--acb:#123a3c;--hl:#fbbf24;--hl2:#7a5a12;--hlb:#2e2710;--pu:#c4b5fd;--pub:#241f42;--lk:#93c5fd;--on:#06201d;
+ --hero1:#26203f;--hero2:#38213a;--foot:#0a101d;--foott:#aab7d8;--sh:rgba(0,0,0,.6);color-scheme:dark}}
+.c-terra{--cc:#2563eb;--cs:#e1eeff}.c-espaco{--cc:#5a49d6;--cs:#e8e5ff}.c-corpo{--cc:#d9365f;--cs:#ffe1e8}.c-vida{--cc:#17894f;--cs:#dcf5e6}
+.c-materia{--cc:#c26a00;--cs:#ffeecf}.c-tec{--cc:#0c7c75;--cs:#d6f4f0}.c-mente{--cc:#7c3aed;--cs:#efe6ff}
+@media(prefers-color-scheme:dark){.c-terra{--cc:#8dbbff;--cs:#16284a}.c-espaco{--cc:#b5acff;--cs:#201c4d}.c-corpo{--cc:#ff9db4;--cs:#44202c}.c-vida{--cc:#7fe0a8;--cs:#173a28}
+.c-materia{--cc:#ffc15e;--cs:#43300f}.c-tec{--cc:#6ee7dc;--cs:#123a38}.c-mente{--cc:#c9b3ff;--cs:#2c2150}}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--tx);font:400 1.125rem/1.7 var(--fb);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 1.125rem/1.75 var(--fu)}
 a{color:var(--lk)}a:hover{text-decoration-thickness:2px}
-:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
-.w{max-width:46rem;margin:0 auto}
-header.top{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;padding:18px 0 14px;border-bottom:2px solid var(--ln)}
-.logo{font:800 1.35rem/1.1 var(--fh);color:var(--tx);text-decoration:none;display:flex;align-items:center;gap:10px}
-.logo .ck{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ac);color:var(--on);font-size:1.15rem}
-nav.menu{display:flex;gap:16px;font:600 .95rem var(--fh)}
-nav.menu a{color:var(--mu);text-decoration:none;padding:4px 2px;border-bottom:3px solid transparent}
-nav.menu a:hover,nav.menu a[aria-current]{color:var(--tx);border-bottom-color:var(--hl)}
-h1,h2,h3{font-family:var(--fh);line-height:1.2;text-wrap:balance}
-h1{font-size:clamp(1.8rem,5vw,2.5rem);margin:.4em 0 .3em;letter-spacing:-.01em}
-h2{font-size:1.45rem;margin:1.6em 0 .4em}
-h3{font-size:1.15rem;margin:1.3em 0 .3em}
-p{margin:.8em 0}
-.slog{font:600 1.1rem var(--fh);color:var(--mu);margin:.2em 0 1.2em}
-.cat{display:inline-block;font:700 .75rem var(--fh);text-transform:uppercase;letter-spacing:.09em;color:var(--ac);margin:1.2em 0 0}
-.meta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font:500 .9rem var(--fh);color:var(--mu);margin:.2em 0 1em}
-.selo{font-family:var(--fh);display:inline-flex;align-items:center;gap:6px;background:var(--acb);color:var(--ac);border-radius:99px;padding:3px 12px 3px 6px;font-weight:700}
-.selo i{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ac);color:var(--on);font-size:.8rem}
-.resposta{background:var(--hlb);border-left:8px solid var(--hl);border-radius:10px;padding:6px 20px 10px;margin:1.2em 0}
-.resposta h2{margin:.6em 0 .2em;font-size:1.1rem;text-transform:uppercase;letter-spacing:.07em}
-.resposta p{font-size:1.2rem}
-.ainda{border-top:2px dashed var(--ln);margin-top:2em}
-.cit{font:600 .72rem var(--fh);margin-left:1px}.cit a{text-decoration:none}
-blockquote{margin:1em 0;padding:.2em 1em;border-left:5px solid var(--ln);color:var(--mu)}
-.fontes{margin-top:2.2em;padding-top:.4em;border-top:2px solid var(--ln);font-size:1rem}
-.fontes ol{padding-left:1.4em}.fontes li{margin:.6em 0;overflow-wrap:anywhere}
-.fontes li:target{background:var(--hlb);border-radius:6px}
-.erro{margin:2em 0;padding:14px 18px;background:var(--card);border:2px solid var(--ln);border-radius:12px;font:500 .95rem/1.5 var(--fh)}
-.lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,16rem),1fr));gap:14px;margin:1.2em 0}
-.card{background:var(--card);border:2px solid var(--ln);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--tx)}
-.card:hover{border-color:var(--ac)}
-.card h3{margin:.1em 0;font-size:1.2rem}.card p{margin:0;font-size:.98rem;color:var(--mu);line-height:1.5}
-.card .selo{align-self:flex-start;font-size:.78rem}
-footer.pe{margin:3em 0 2em;padding-top:1em;border-top:2px solid var(--ln);font:500 .9rem/1.6 var(--fh);color:var(--mu)}
-footer.pe a{color:var(--mu)}
-@media print{header.top,footer.pe{display:none}body{background:#fff;color:#000}}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px;border-radius:6px}
+.in{max-width:68rem;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.art{max-width:46rem}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+header.top .in{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+.logo{font:600 1.45rem/1.1 var(--fh);color:var(--tx);text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo .ck{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;background:var(--ac);color:var(--on);font:800 1.15rem var(--fu);transform:rotate(-6deg)}
+nav.menu{display:flex;flex-wrap:wrap;gap:4px 8px;font:700 .95rem var(--fu)}
+nav.menu a{color:var(--mu);text-decoration:none;padding:7px 13px;border-radius:99px}
+nav.menu a:hover{background:var(--acb);color:var(--ac)}
+nav.menu a[aria-current]{background:var(--tx);color:var(--bg)}
+h1,h2,h3{font-family:var(--fh);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,6.2vw,3.3rem);letter-spacing:-.015em;margin:.3em 0 .35em}
+h2{font-size:clamp(1.55rem,4vw,2rem);margin:2em 0 .5em}
+h3{font-size:1.3rem;margin:1.5em 0 .35em}
+p{margin:.85em 0}
+.chip{display:inline-block;font:800 .72rem/1 var(--fu);text-transform:uppercase;letter-spacing:.09em;color:var(--cc,var(--ac));background:var(--cs,var(--acb));padding:7px 13px;border-radius:99px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font:600 .92rem var(--fu);color:var(--mu);margin:.4em 0 1.4em}
+.selo{display:inline-flex;align-items:center;gap:7px;background:var(--acb);color:var(--ac);border-radius:99px;padding:4px 14px 4px 5px;font:800 .82rem var(--fu)}
+.selo i{font-style:normal;display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:var(--on);font-size:.8rem}
+.banner{border-radius:26px;overflow:hidden;aspect-ratio:21/8;margin:20px 0 26px;box-shadow:0 18px 40px -24px var(--sh)}
+.banner svg,.thumb svg{display:block;width:100%;height:100%}
+.art p,.art li{max-width:42rem}
+.secao>p:first-of-type{margin-top:.2em}
+.resposta{background:var(--hlb);border:2px solid var(--hl2);border-radius:24px;padding:26px 28px 12px;margin:2.6em 0 1.8em}
+.resposta h2{display:inline-block;margin:-46px 0 12px;background:var(--hl);color:#3a2400;font:800 .8rem/1 var(--fu);text-transform:uppercase;letter-spacing:.1em;padding:9px 16px;border-radius:99px}
+.resposta p{font-size:1.28rem;line-height:1.6}
+.ainda{background:var(--pub);border-radius:24px;padding:4px 28px 14px;margin:2.6em 0}
+.ainda h2{display:flex;align-items:center;gap:12px;color:var(--pu);font-size:1.55rem}
+.ainda h2::before{content:"?";flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--pu);color:#fff;font:800 1.2rem var(--fu)}
+.cit{margin-left:2px;vertical-align:baseline}
+.cit a{display:inline-block;background:var(--acb);color:var(--ac);border-radius:7px;padding:0 6px;font:800 .72rem/1.55 var(--fu);text-decoration:none;position:relative;top:-.45em}
+.cit a:hover{background:var(--ac);color:var(--on)}
+blockquote{margin:1.2em 0;padding:.6em 1.2em;border-left:6px solid var(--hl);background:var(--hlb);border-radius:0 16px 16px 0;color:var(--tx)}
+ul,ol{padding-left:1.35em}li{margin:.45em 0}li::marker{color:var(--ac);font-weight:800}
+.fontes{background:var(--card);border:2px solid var(--ln);border-radius:24px;padding:6px 28px 18px;margin:2.8em 0 1.6em;font-size:1rem}
+.fontes h2{font-size:1.4rem;margin:.9em 0 .3em}
+.fontes ol{padding-left:1.5em}.fontes li{margin:.7em 0;overflow-wrap:anywhere;line-height:1.55}
+.fontes li:target{background:var(--hlb);border-radius:8px;box-shadow:0 0 0 6px var(--hlb)}
+.erro{margin:1.6em 0 3em;padding:16px 20px;background:var(--acb);border-radius:18px;font:600 .96rem/1.55 var(--fu);color:var(--tx)}
+.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));overflow:hidden}
+.hero .in{display:grid;grid-template-columns:1.15fr .85fr;gap:20px 34px;align-items:center;padding-top:44px;padding-bottom:44px}
+.kicker{font:800 .8rem/1.3 var(--fu);text-transform:uppercase;letter-spacing:.12em;color:var(--ac);margin:0 0 6px}
+.hero h1{font-size:clamp(2.4rem,7vw,4.2rem);margin:.1em 0 .3em}
+.lead{font-size:clamp(1.1rem,2.6vw,1.3rem);color:var(--mu);max-width:34rem;margin:0 0 1.4em}
+.acoes{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;background:var(--ac);color:var(--on);font:800 1rem var(--fu);padding:14px 24px;border-radius:99px;text-decoration:none;box-shadow:0 12px 24px -14px var(--ac);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.sec{background:transparent;color:var(--tx);border:2px solid var(--tx);box-shadow:none}
+.hero-art svg{width:100%;max-width:25rem;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 20px 20px rgba(29,37,64,.18))}
+.bloco{padding-top:8px;padding-bottom:12px}
+.bloco>h2{margin:1.8em 0 .6em}
+.passos{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:18px}
+.passo{background:var(--card);border:2px solid var(--ln);border-radius:22px;padding:22px;margin:0}
+.passo h3{margin:.7em 0 .3em;font-size:1.25rem}.passo p{margin:0;color:var(--mu);font-size:1rem;line-height:1.55}
+.num{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--cc);color:#fff;font:800 1.25rem var(--fu)}
+.lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,19rem),1fr));gap:22px;margin:0 0 1em}
+.card{display:flex;flex-direction:column;background:var(--card);border-radius:24px;overflow:hidden;text-decoration:none;color:var(--tx);border:2px solid var(--ln);transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-5px);box-shadow:0 22px 40px -26px var(--sh);border-color:var(--cc)}
+.thumb{aspect-ratio:2/1;overflow:hidden}
+.cb{padding:18px 22px 22px;display:flex;flex-direction:column;align-items:flex-start;gap:11px;flex:1}
+.card h3{margin:0;font-size:1.4rem}
+.card p{margin:0;color:var(--mu);font-size:1rem;line-height:1.55;flex:1}
+footer.pe{background:var(--foot);color:var(--foott);margin-top:3.5em}
+footer.pe .in{padding-top:28px;padding-bottom:max(30px,env(safe-area-inset-bottom,0px));font:500 .93rem/1.7 var(--fu)}
+footer.pe a{color:var(--foott)}footer.pe strong{font:600 1.2rem var(--fh);color:#fff}
+@media(max-width:44rem){.hero .in{grid-template-columns:1fr;padding-top:28px;padding-bottom:30px}.hero-art{order:-1}.hero-art svg{max-width:13rem}
+.banner{aspect-ratio:16/8;border-radius:20px}.resposta,.ainda,.fontes{padding-left:20px;padding-right:20px}nav.menu{font-size:.85rem;gap:0}nav.menu a{padding:6px 9px}.logo{font-size:1.3rem}}
+@media print{header.top,footer.pe,.hero-art,.banner{display:none}body{background:#fff;color:#000}}
 """
 
 JS_TEMA = ""  # tema segue o sistema; sem JavaScript
@@ -192,7 +235,7 @@ def analytics_html():
     return ""
 
 
-def pagina(titulo, desc, corpo, rel, url_rel, ativo="", og_tipo="website", jsonld=None):
+def pagina(titulo, desc, corpo, rel, url_rel, ativo="", og_tipo="website", jsonld=None, cru=False):
     nome = CFG["nome"]
     t = nome if titulo == nome else f"{titulo} · {nome}"
     canon = CFG["url"].rstrip("/") + "/" + url_rel
@@ -201,6 +244,7 @@ def pagina(titulo, desc, corpo, rel, url_rel, ativo="", og_tipo="website", jsonl
             ("sobre/", "Sobre", "sobre")]
     nav = "".join(f'<a href="{rel}{u}"{" aria-current=page" if k == ativo else ""}>{n}</a>' for u, n, k in menu)
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
+    miolo = corpo if cru else f'<main class="in art">\n{corpo}\n</main>'
     return f"""<!doctype html>
 <html lang="{CFG['idioma']}">
 <head>
@@ -216,19 +260,16 @@ def pagina(titulo, desc, corpo, rel, url_rel, ativo="", og_tipo="website", jsonl
 <meta property="og:locale" content="pt_BR">
 <meta name="color-scheme" content="light dark">
 <link rel="alternate" type="application/rss+xml" title="{esc(nome)}" href="{rel}feed.xml">
+<link rel="preload" href="{rel}fontes/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{rel}estilo.css">
 {ld}
 {analytics_html()}
 </head>
 <body>
-<div class="w">
-<header class="top"><a class="logo" href="{home}"><span class="ck" aria-hidden="true">✓</span>{esc(nome)}</a><nav class="menu" aria-label="Principal">{nav}</nav></header>
-<main>
-{corpo}
-</main>
-<footer class="pe">{esc(nome)}: {esc(CFG['slogan'].lower())}. Os textos são escritos com ajuda de inteligência artificial e conferidos contra as fontes citadas em cada artigo
-(<a href="{rel}como-fazemos/">como fazemos</a>). Viu algum erro? <a href="{esc(CFG['repo'])}/issues/new">Avise aqui</a> e a gente corrige e registra na página de <a href="{rel}correcoes/">correções</a>.</footer>
-</div>
+<header class="top"><div class="in"><a class="logo" href="{home}"><span class="ck" aria-hidden="true">✓</span>{esc(nome)}</a><nav class="menu" aria-label="Principal">{nav}</nav></div></header>
+{miolo}
+<footer class="pe"><div class="in"><p><strong>{esc(nome)}</strong><br>{esc(CFG['slogan'])}. Os textos são escritos com ajuda de inteligência artificial e conferidos contra as fontes citadas em cada artigo
+(<a href="{rel}como-fazemos/">como fazemos</a>). Viu algum erro? <a href="{esc(CFG['repo'])}/issues/new">Avise aqui</a> e a gente corrige e registra na página de <a href="{rel}correcoes/">correções</a>.</p></div></footer>
 </body>
 </html>
 """
@@ -245,15 +286,19 @@ def pagina_artigo(a):
     fontes = "".join(
         f'<li id="fonte-{i}"><a href="{esc(f["url"])}" rel="noopener">{esc(f["titulo"])}</a>, {esc(f["instituicao"])}. '
         f'Aberta e conferida em {data_curta(f["acessado"])}.</li>' for i, f in enumerate(a["fontes"], 1))
-    corpo = f"""<article>
-<span class="cat">{esc(a['categoria'])}</span>
+    sc = visual.slug_cat(a["categoria"])
+    corpo = f"""<div class="c-{sc}">
+<div class="banner">{visual.cena(a['categoria'], 'b')}</div>
+<span class="chip">{esc(a['categoria'])}</span>
 <h1>{esc(a['titulo'])}</h1>
 <p class="meta"><span class="selo"><i aria-hidden="true">✓</i>Conferido em {data_br(a['conferido'])}</span><span>Publicado em {data_br(a['publicado'])}</span></p>
+<article>
 {corpo_html(a)}
 <section class="fontes"><h2>Fontes</h2><ol>{fontes}</ol></section>
 <p class="erro">Cada fato acima leva o número da fonte em que foi conferido. Se você achar algo errado ou desatualizado,
 <a href="{esc(CFG['repo'])}/issues/new">avise aqui</a>: a gente corrige e anota na página de <a href="../../correcoes/">correções</a>.</p>
-</article>"""
+</article>
+</div>"""
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": a["titulo"], "inLanguage": "pt-BR",
           "datePublished": a["publicado"], "dateModified": a["conferido"], "description": a["resumo"],
           "publisher": {"@type": "Organization", "name": CFG["nome"]},
@@ -263,22 +308,30 @@ def pagina_artigo(a):
 
 
 def cartao(a, rel):
-    return (f'<a class="card" href="{rel}artigos/{a["slug"]}/"><span class="cat" style="margin:0">{esc(a["categoria"])}</span>'
-            f'<h3>{esc(a["titulo"])}</h3><p>{esc(a["resumo"])}</p>'
-            f'<span class="selo"><i aria-hidden="true">✓</i>Conferido em {data_curta(a["conferido"])}</span></a>')
+    sc = visual.slug_cat(a["categoria"])
+    return (f'<a class="card c-{sc}" href="{rel}artigos/{a["slug"]}/"><div class="thumb">{visual.cena(a["categoria"], "c" + a["slug"][-6:])}</div>'
+            f'<div class="cb"><span class="chip">{esc(a["categoria"])}</span><h3>{esc(a["titulo"])}</h3><p>{esc(a["resumo"])}</p>'
+            f'<span class="selo"><i aria-hidden="true">✓</i>Conferido em {data_curta(a["conferido"])}</span></div></a>')
 
 
 def pagina_inicio(arts):
     cards = "\n".join(cartao(a, "") for a in arts) or "<p>Os primeiros artigos chegam em breve.</p>"
-    corpo = f"""<h1>{esc(CFG['slogan'])}</h1>
-<p class="slog">{esc(CFG['descricao'])}</p>
-<div class="resposta"><h2>Como funciona</h2><p>Cada artigo começa com uma <strong>resposta rápida</strong> e depois explica melhor. Todo número ou fato leva uma
-<sup class="cit"><a href="como-fazemos/">[n]</a></sup> que aponta para a fonte onde ele foi conferido, e todo artigo diz <strong>o que a ciência ainda não sabe</strong>.</p></div>
-<h2>Artigos</h2>
+    corpo = f"""<section class="hero"><div class="in">
+<div><p class="kicker">Para curiosos de 8 a 80 anos</p><h1>{esc(CFG['slogan'])}</h1>
+<p class="lead">{esc(CFG['descricao'])}</p>
+<div class="acoes"><a class="btn" href="#artigos">Ver os artigos</a><a class="btn sec" href="como-fazemos/">Como conferimos</a></div></div>
+<div class="hero-art">{visual.lupa()}</div></div></section>
+<section class="in bloco"><h2>Como funciona</h2>
+<ol class="passos">
+<li class="passo c-terra"><span class="num">1</span><h3>Uma pergunta curiosa</h3><p>Escolhemos perguntas que crianças e adultos fazem de verdade: por que o céu é azul, por que o mar é salgado.</p></li>
+<li class="passo c-vida"><span class="num">2</span><h3>Resposta rápida e explicação</h3><p>Primeiro a resposta em poucas linhas. Depois, o raciocínio completo, com os termos novos explicados.</p></li>
+<li class="passo c-materia"><span class="num">3</span><h3>Fonte conferida em cada fato</h3><p>Todo número leva um <sup class="cit"><a href="como-fazemos/">n</a></sup> que aponta para a fonte aberta e conferida. E todo artigo diz o que a ciência ainda não sabe.</p></li>
+</ol></section>
+<section class="in bloco" id="artigos"><h2>Artigos</h2>
 <div class="lista">
 {cards}
-</div>"""
-    escreve("index.html", pagina(CFG["nome"], CFG["descricao"], corpo, "", "", ativo="inicio"))
+</div></section>"""
+    escreve("index.html", pagina(CFG["nome"], CFG["descricao"], corpo, "", "", ativo="inicio", cru=True))
 
 
 def pagina_como():
@@ -373,6 +426,7 @@ def main():
     SAIDA.mkdir()
     (SAIDA / ".nojekyll").write_text("", encoding="utf-8")
     escreve("estilo.css", CSS.strip() + "\n")
+    shutil.copytree(RAIZ / "assets" / "fontes", SAIDA / "fontes")
     for a in arts:
         pagina_artigo(a)
     pagina_inicio(arts)
