@@ -21,19 +21,19 @@ Segundo o serviço geológico dos Estados Unidos (USGS), o sal do oceano vem de 
 
 ### O que mais coloca sal no mar
 
-O fundo do oceano também contribui. Nas fontes hidrotermais do fundo do mar, a água do mar entra por rachaduras na crosta da Terra, é aquecida e dissolve minerais da rocha antes de voltar a subir. Segundo o USGS, vulcões no fundo do mar também liberam minerais na água. [1]
+O fundo do oceano também contribui. Nas fontes hidrotermais do fundo do mar, a água do mar que se infiltra nas rochas da crosta fica mais quente e dissolve parte dos minerais. Segundo o USGS, vulcões no fundo do mar também liberam minerais na água. [1]
 
 ### Qual sal fica e qual sai
 
-Alguns elementos dissolvidos são usados por seres vivos do mar e retirados da água; o USGS cita que isso acontece com parte dos íons, e a WHOI cita ferro, zinco e cobre. Já o sódio e o cloro, os ingredientes do sal de cozinha, não são retirados pelos organismos e por isso se acumulam. [1][2] Cloro e sódio são os íons mais comuns da água do mar e somam mais de 90% de todos os íons dissolvidos. [1]
+Alguns elementos dissolvidos são usados por seres vivos do mar e retirados da água; o USGS diz que muitos íons dissolvidos são usados por seres vivos e saem da água, e a WHOI dá como exemplo ferro, zinco e cobre. Já o sódio e o cloreto, os ingredientes do sal de cozinha, não são retirados pelos organismos; ficam para trás e a quantidade de sal no oceano foi crescendo com o tempo. [2] O USGS diz que os íons que não são usados ficam na água por longos períodos e sua concentração aumenta. [1] Cloreto e sódio são os íons mais comuns da água do mar e somam mais de 90% de todos os íons dissolvidos. [1]
 
 ### Quanto sal tem no mar
 
-A água do mar tem, em média, cerca de 3,5% de sal. Segundo o USGS, isso equivale a cerca de 35 partes de sal em cada 1.000 partes de água. [1] O sal deixa a água mais densa que a água doce, e é por isso que pessoas e objetos flutuam mais fácil no mar. [2]
+A água do mar tem, em média, cerca de 3,5% de sal. Segundo o USGS, isso equivale a cerca de 35 partes de sal em cada 1.000 partes de água. [1] O sal deixa a água mais densa que a água doce, e e por isso pessoas, animais e objetos ficam mais flutuantes na água do mar. [2]
 
 ### Se os rios levam sal, por que o rio não é salgado?
 
-Os rios têm sal, sim, mas muito pouco: a chuva que alimenta os rios traz muito mais água doce do que sal, e isso impede que riachos, rios e lagos fiquem salgados. [2] No oceano, o sal que chega é guardado ali, e o sódio e o cloro vão se acumulando. [1][2]
+A chuva pode levar uma quantidade pequena de sal, mas traz muito mais água doce para riachos, rios e lagos. [2] No oceano, o sal que não é usado pelos seres vivos fica para trás e vai se acumulando. [1][2]
 
 ### O sal é igual em todo lugar?
 

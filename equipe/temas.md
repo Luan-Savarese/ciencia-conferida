@@ -5,7 +5,7 @@ Status: `livre` → `em rascunho (data)` → `rascunho pronto (data)` → `publi
 | tema | categoria | onde procurar | status |
 | --- | --- | --- | --- |
 | Por que o céu é azul? | Terra e céu | NASA Space Place, NOAA | publicado (2026-11-10) |
-| Por que o mar é salgado? | Terra e céu | USGS, WHOI | rascunho pronto (2026-11-10) |
+| Por que o mar é salgado? | Terra e céu | USGS, WHOI | publicado (2026-11-10) |
 | Quanto tempo a luz do Sol leva para chegar à Terra? | Espaço | NASA, Smithsonian | reprovado (2026-11-10) |
 | Por que a Lua muda de fase? | Espaço | NASA | livre |
 | Como se forma o arco-íris? | Terra e céu | NOAA SciJinks, NWS | livre |
