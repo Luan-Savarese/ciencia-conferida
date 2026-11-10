@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://luan-savarese.github.io/ciencia-conferida/sitemap.xml
