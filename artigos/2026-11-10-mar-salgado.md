@@ -1,12 +1,16 @@
 ---
 titulo: Por que o mar é salgado?
 slug: mar-salgado
-categoria: Terra e céu
+categoria: Meio ambiente
+nivel: iniciante
 publicado: 2026-11-10
 conferido: 2026-11-10
 resumo: O sal do mar vem das rochas da terra, levado pela chuva e pelos rios, e também do fundo do oceano. Veja por que os rios não ficam salgados.
 fonte: Why is the ocean salty? (em inglês) | USGS, Water Science School | https://www.usgs.gov/water-science-school/science/why-ocean-salty | 2026-11-10
 fonte: What makes the ocean salty? (em inglês) | Woods Hole Oceanographic Institution (WHOI) | https://www.whoi.edu/know-your-ocean/what-makes-the-ocean-salty | 2026-11-10
+curiosidade: Cerca de 70% da superfície da Terra é coberta por oceanos, e cerca de 97% de toda a água do planeta é salgada. [1]
+curiosidade: A água do mar tem, em média, cerca de 3,5% de sal. Segundo o USGS, isso equivale a cerca de 35 partes de sal em cada 1.000 partes de água. [1]
+curiosidade: Cloreto e sódio são os íons mais comuns da água do mar e somam mais de 90% de todos os íons dissolvidos. [1]
 ---
 
 ## Resposta rápida
@@ -29,7 +33,7 @@ Alguns elementos dissolvidos são usados por seres vivos do mar e retirados da �
 
 ### Quanto sal tem no mar
 
-A água do mar tem, em média, cerca de 3,5% de sal. Segundo o USGS, isso equivale a cerca de 35 partes de sal em cada 1.000 partes de água. [1] O sal deixa a água mais densa que a água doce, e e por isso pessoas, animais e objetos ficam mais flutuantes na água do mar. [2]
+A água do mar tem, em média, cerca de 3,5% de sal. Segundo o USGS, isso equivale a cerca de 35 partes de sal em cada 1.000 partes de água. [1] O sal deixa a água mais densa que a água doce, e por isso pessoas, animais e objetos ficam mais flutuantes na água do mar. [2]
 
 ### Se os rios levam sal, por que o rio não é salgado?
 

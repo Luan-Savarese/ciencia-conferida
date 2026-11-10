@@ -1,0 +1,56 @@
+[
+  {
+    "titulo": "Buraco na camada de ozônio de 2026 foi o 7º maior em 48 anos de monitoramento",
+    "resumo": "NASA e NOAA informam que o buraco sobre a Antártida chegou a 27,1 milhões de km² em 18 de setembro. Um vórtice polar grande ajudou a abri-lo, mas a camada segue em recuperação, com previsão de se recuperar até a década de 2070.",
+    "fonte": "NASA",
+    "url": "https://science.nasa.gov/earth/2026-ozone-hole/",
+    "publicado": "2026-11-04",
+    "coletado": "2026-11-10",
+    "tema": "Meio ambiente"
+  },
+  {
+    "titulo": "Sondas gêmeas ESCAPADE vão usar a gravidade da Terra para seguir a Marte",
+    "resumo": "A NASA informou que as duas sondas fariam passagens motorizadas pela Terra, em 7 e 9 de novembro, com um impulso de motor de cerca de 9 minutos. Elas devem chegar a Marte em setembro de 2027.",
+    "fonte": "NASA",
+    "url": "https://science.nasa.gov/blogs/escapade/2026/11/02/nasas-twin-escapade-spacecraft-to-slingshot-past-earth-on-way-to-mars/",
+    "publicado": "2026-11-02",
+    "coletado": "2026-11-10",
+    "tema": "Espaço"
+  },
+  {
+    "titulo": "Pesquisa da Unicamp transforma chorume de aterro em fertilizante",
+    "resumo": "Cientistas extraíram carnalita e estruvita do chorume. Em teste com alfaces, a dose dupla de estruvita rendeu 105% mais massa seca que o adubo NPK comercial, sem metais pesados detectáveis. O Brasil importa 96% do potássio que usa como fertilizante.",
+    "fonte": "Agência FAPESP",
+    "url": "https://agencia.fapesp.br/pesquisa-transforma-chorume-em-fertilizante-seguro-para-a-agricultura/59577",
+    "publicado": "2026-11-10",
+    "coletado": "2026-11-10",
+    "tema": "Meio ambiente"
+  },
+  {
+    "titulo": "Resina para impressão 3D evita coágulos em protótipo de coração artificial",
+    "resumo": "Pesquisadores da Unicamp e parceiros criaram uma resina que libera óxido nítrico, o que ajuda a impedir coágulos. Em testes de laboratório, mostrou segurança no contato com o sangue num protótipo de coração artificial; novos testes estão planejados.",
+    "fonte": "Agência FAPESP",
+    "url": "https://agencia.fapesp.br/nova-resina-para-impressao-3d-de-dispositivos-cardiovasculares-evita-formacao-de-coagulos/59569",
+    "publicado": "2026-11-09",
+    "coletado": "2026-11-10",
+    "tema": "Corpo humano"
+  },
+  {
+    "titulo": "A órbita da estrela S2 ainda não revela a natureza do buraco negro da Via Láctea",
+    "resumo": "Pesquisadores do IAG-USP compararam seis modelos do espaço-tempo com mais de 20 anos de observações da estrela S2. Três modelos ficaram praticamente indistinguíveis e os outros três seguem compatíveis com os dados: as observações atuais ainda não definem qual descreve o objeto.",
+    "fonte": "Agência FAPESP",
+    "url": "https://agencia.fapesp.br/orbita-de-estrela-ajuda-a-investigar-a-natureza-do-buraco-negro-no-centro-da-via-lactea/59546",
+    "publicado": "2026-11-09",
+    "coletado": "2026-11-10",
+    "tema": "Espaço"
+  },
+  {
+    "titulo": "Imagens de satélite ajudam a mapear manchas de poluição na represa Billings",
+    "resumo": "Pesquisadores do Inpe criaram um método que usa satélites para acompanhar o carbono orgânico dissolvido na água, indicador de matéria orgânica, esgoto sem tratamento e algas. Ainda é menos preciso que medições no local, mas dá uma visão ampla e contínua.",
+    "fonte": "Agência FAPESP",
+    "url": "https://agencia.fapesp.br/imagens-de-satelite-ajudam-a-rastrear-manchas-de-poluicao-na-represa-billings/59566",
+    "publicado": "2026-11-06",
+    "coletado": "2026-11-10",
+    "tema": "Meio ambiente"
+  }
+]

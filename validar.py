@@ -7,10 +7,14 @@ Uso:  python3 validar.py                       (todos em artigos/)
 Regras (as mesmas da página "Como fazemos"):
 - cabeçalho completo; nome do arquivo AAAA-MM-DD-slug.md igual ao slug e à data de publicação
 - pelo menos 2 fontes, https, de pelo menos 2 sites diferentes, cada uma com data de conferência
-- seções "Resposta rápida" (até 60 palavras), "Explicando melhor" e "O que ainda não se sabe"
+- tema (campo "categoria") entre os 6 do site e "nivel" (iniciante, intermediario ou avancado)
+- 1 a 3 linhas "curiosidade:": cada uma é uma frase copiada do texto do artigo, terminada por [n] de fonte que existe
+- seções "Resposta rápida" (até 60 palavras), "Explicando melhor" e "O que ainda não se sabe" ("Para ir mais fundo" é opcional)
 - todo parágrafo ou item com algum número leva citação [n]; toda citação aponta para uma fonte que existe; toda fonte é citada
 - nada de marcas de rascunho (TODO, XXX, lorem, ???)
+- noticias.json: só links https de sites de uma lista aprovada, com data de publicação e fonte, resumo curto, tema válido
 """
+import json
 import re
 import sys
 from datetime import date
@@ -19,10 +23,20 @@ from urllib.parse import urlparse
 
 RAIZ = Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
-from build import ler_artigo  # noqa: E402
+from build import ler_artigo, sem_marcas  # noqa: E402
+import visual  # noqa: E402
 
-CATEGORIAS = {"Terra e céu", "Espaço", "Corpo humano", "Vida", "Matéria e energia", "Tecnologia", "Mente e comportamento"}
-OBRIGATORIOS = ["titulo", "slug", "categoria", "publicado", "conferido", "resumo"]
+CATEGORIAS = set(visual.TEMAS)
+NIVEIS = {"iniciante", "intermediario", "avancado"}
+OBRIGATORIOS = ["titulo", "slug", "categoria", "nivel", "publicado", "conferido", "resumo"]
+# sites aprovados para notícias (o endereço precisa terminar num destes nomes)
+DOMINIOS_NOTICIAS = {
+    "nasa.gov", "noaa.gov", "esa.int", "usgs.gov", "nih.gov", "who.int", "cern.ch", "home.cern", "si.edu",
+    "fapesp.br", "usp.br", "unicamp.br", "unesp.br", "ufmg.br", "ufrj.br", "ufscar.br", "fiocruz.br", "inpe.br", "embrapa.br",
+    "butantan.gov.br", "agenciabrasil.ebc.com.br", "gov.br",
+    "g1.globo.com", "oglobo.globo.com", "cnnbrasil.com.br", "bbc.com", "uol.com.br", "estadao.com.br",
+    "nature.com", "science.org", "scientificamerican.com", "nationalgeographic.com", "smithsonianmag.com",
+}
 PALAVRAS_PROIBIDAS = re.compile(r"\b(TODO|XXX)\b|\b(?i:lorem|ipsum)\b|\?\?\?")  # TODO só em maiúsculas: "todo" é português
 
 
@@ -54,6 +68,8 @@ def valida(caminho):
             erros.append("data do nome do arquivo difere de 'publicado'")
     if a["categoria"] not in CATEGORIAS:
         erros.append(f"categoria '{a['categoria']}' não está em {sorted(CATEGORIAS)}")
+    if a["nivel"] not in NIVEIS:
+        erros.append(f"nivel '{a['nivel']}' deve ser um de {sorted(NIVEIS)}")
     pub, conf = iso(a["publicado"]), iso(a["conferido"])
     if not pub or not conf:
         erros.append("'publicado' e 'conferido' devem ser AAAA-MM-DD")
@@ -86,6 +102,23 @@ def valida(caminho):
     m2 = re.search(r"(?ms)^## Resposta rápida\n(.*?)(?=^## |\Z)", corpo)
     if m2 and len(re.findall(r"\w+", re.sub(r"\[\d+\]", "", m2.group(1)))) > 60:
         erros.append("a resposta rápida passa de 60 palavras")
+    # curiosidades: frases do próprio artigo, com fonte
+    cur = a["curiosidades"]
+    if not 1 <= len(cur) <= 3:
+        erros.append("precisa de 1 a 3 linhas 'curiosidade:'")
+    corpo_limpo = sem_marcas(corpo)
+    for c in cur:
+        marcas = [int(x) for x in re.findall(r"\[(\d+)\]", c)]
+        if not marcas or not re.search(r"\[\d+\]\s*$", c):
+            erros.append(f"curiosidade sem [n] no fim: «{c[:60]}…»")
+        for n in marcas:
+            if n < 1 or n > len(fontes):
+                erros.append(f"curiosidade cita [{n}], fonte que não existe")
+        txt = sem_marcas(c)
+        if len(txt) > 280:
+            erros.append(f"curiosidade passa de 280 caracteres: «{c[:60]}…»")
+        if txt not in corpo_limpo:
+            erros.append(f"curiosidade não está no texto do artigo (copie a frase como está): «{c[:60]}…»")
     # citações
     citadas = set()
     for bloco in re.split(r"\n\s*\n", corpo):
@@ -107,9 +140,60 @@ def valida(caminho):
     return erros
 
 
+def valida_noticias():
+    arq = RAIZ / "noticias.json"
+    if not arq.exists():
+        return []
+    try:
+        itens = json.loads(arq.read_text(encoding="utf-8"))
+    except ValueError as e:
+        return [f"noticias.json inválido: {e}"]
+    erros, vistas = [], set()
+    hoje = date.today()
+    for i, n in enumerate(itens, 1):
+        pre = f"notícia {i}"
+        for k in ("titulo", "resumo", "fonte", "url", "publicado", "coletado", "tema"):
+            if not n.get(k):
+                erros.append(f"{pre}: falta '{k}'")
+        if any(not n.get(k) for k in ("titulo", "resumo", "fonte", "url", "publicado", "coletado", "tema")):
+            continue
+        u = urlparse(n["url"])
+        host = (u.hostname or "").lower()
+        if u.scheme != "https" or not host:
+            erros.append(f"{pre}: o link deve ser https")
+        elif not any(host == d or host.endswith("." + d) for d in DOMINIOS_NOTICIAS):
+            erros.append(f"{pre}: site '{host}' não está na lista aprovada (DOMINIOS_NOTICIAS)")
+        if n["url"] in vistas:
+            erros.append(f"{pre}: link repetido")
+        vistas.add(n["url"])
+        if n["tema"] not in CATEGORIAS:
+            erros.append(f"{pre}: tema '{n['tema']}' não está em {sorted(CATEGORIAS)}")
+        pub, col = iso(n["publicado"]), iso(n["coletado"])
+        if not pub or not col:
+            erros.append(f"{pre}: datas devem ser AAAA-MM-DD")
+        else:
+            if pub > hoje or col > hoje:
+                erros.append(f"{pre}: data no futuro")
+            if col < pub:
+                erros.append(f"{pre}: 'coletado' anterior a 'publicado'")
+        if len(n["titulo"]) > 120:
+            erros.append(f"{pre}: título passa de 120 caracteres")
+        if len(n["resumo"]) > 340:
+            erros.append(f"{pre}: resumo passa de 340 caracteres")
+        if PALAVRAS_PROIBIDAS.search(n["titulo"] + " " + n["resumo"]):
+            erros.append(f"{pre}: marca de rascunho")
+    return erros
+
+
 def main():
     alvos = [Path(p) for p in sys.argv[1:]] or sorted((RAIZ / "artigos").glob("*.md"))
     problemas = 0
+    if not sys.argv[1:]:
+        e = valida_noticias()
+        print(("OK   " if not e else "ERRO ") + "noticias.json")
+        for x in e:
+            print("       -", x)
+        problemas += len(e)
     for p in alvos:
         e = valida(p)
         print(("OK   " if not e else "ERRO ") + p.name)
