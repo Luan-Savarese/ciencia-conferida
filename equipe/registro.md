@@ -1,5 +1,6 @@
 # Registro de trabalho
 
+- 2026-11-10 | Repórter | 0 itens novos; noticias.json não mudou. Achei candidatas nas listagens da Agência FAPESP, do Jornal da USP e da NASA, mas o WebFetch das páginas das notícias (USP zika/neurofibromatose, USP febre em sapos e lagartos, NASA Chandra, USP merenda escolar) falhou com PROVENANCE_REQUIRED (permissão sem resposta), e o site da Agência Brasil e science.nasa.gov/science-news também. Sem abrir a página não resumo, então descartei. Não tentei de novo nem outro meio.
 - 2026-11-10 | Conferente | Segunda conferência de mar-salgado (já publicado por outra execução): reabertas USGS e WHOI; único ajuste, a frase dos vulcões submarinos agora diz o que o USGS diz (a água do mar reage com rocha quente e dissolve minerais). Sem rascunhos pendentes; reconferência de artigos não necessária (nenhum com mais de 90 dias).
 Uma linha por evento, mais novo em cima: data, quem (Claude, Redator, Conferente), o que fez, o que sobrou.
 
