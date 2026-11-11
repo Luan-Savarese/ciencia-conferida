@@ -70,5 +70,23 @@
     "publicado": "2026-11-10",
     "coletado": "2026-11-10",
     "tema": "Animais"
+  },
+  {
+    "titulo": "Estudos teóricos indicam que o LISA poderia achar planetas gigantes ao redor de estrelas anãs brancas duplas",
+    "resumo": "Dois estudos da NASA estimam que o observatório de ondas gravitacionais LISA, previsto para meados dos anos 2030, resolveria cerca de 10 mil pares de anãs brancas. Planetas de massa próxima à de Júpiter poderiam aparecer, e o telescópio James Webb ajudaria a confirmá-los.",
+    "fonte": "NASA",
+    "url": "https://science.nasa.gov/missions/lisa/gravitational-waves-can-reveal-new-worlds/",
+    "publicado": "2026-11-10",
+    "coletado": "2026-11-11",
+    "tema": "Espaço"
+  },
+  {
+    "titulo": "Pesquisadores testam moléculas contra a enzima da bactéria da tuberculose, em estudo de laboratório",
+    "resumo": "Equipe do Cepid B3, na USP, com parceiros da França e dos EUA, testou cerca de 600 pequenas moléculas. 14 se ligaram à enzima DNA girase e 5 mostraram potencial de inibi-la. O trabalho é inicial: a equipe ainda busca compostos mais potentes. O tratamento atual pode passar de seis meses.",
+    "fonte": "Jornal da USP",
+    "url": "https://jornal.usp.br/ciencias/ciencias-ft-cientistas-buscam-novos-caminhos-para-atacar-bacteria-causadora-da-tuberculose",
+    "publicado": "2026-11-10",
+    "coletado": "2026-11-11",
+    "tema": "Corpo humano"
   }
 ]
