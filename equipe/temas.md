@@ -8,7 +8,7 @@ Status: `livre` → `em rascunho (data)` → `rascunho pronto (data)` → `publi
 | Por que o mar é salgado? | Meio ambiente | USGS, WHOI | publicado (2026-11-10) |
 | Quanto tempo a luz do Sol leva para chegar à Terra? | Espaço | NASA, Smithsonian | reprovado (2026-11-10) |
 | Por que a Lua muda de fase? | Espaço | NASA | publicado (2026-11-11) |
-| Como se forma o arco-íris? | Física | NOAA SciJinks, NWS | livre |
+| Como se forma o arco-íris? | Física | NOAA SciJinks, NWS | rascunho pronto (2026-11-12) |
 | Por que o gelo flutua na água? | Física | USGS Water Science School | livre |
 | Como o coração bate? | Corpo humano | NHLBI (NIH), MedlinePlus | livre |
 | Como as plantas fazem fotossíntese? | Meio ambiente | NASA, universidade, USDA | livre |
