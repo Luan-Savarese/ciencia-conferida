@@ -36,7 +36,7 @@ O sangue com pouco oxigênio vem do corpo e entra no coração por duas veias gr
 
 ### Quem dá o sinal para bater
 
-O coração tem uma rede elétrica própria, chamada sistema de condução. [5] O sinal elétrico começa no nó sinusal (ou sinoatrial), que fica na parte de cima do átrio direito. [3][5] O nó sinusal é chamado de marca-passo natural do coração. [3][5] Quando ele solta o impulso, os átrios se contraem. [3] Depois o sinal passa por outro ponto, o nó atrioventricular, e segue pelas fibras musculares dos ventrículos, que também se contraem. [3] Ou seja, primeiro contraem os átrios e depois os ventrículos. [3]
+O coração tem uma rede elétrica própria, chamada sistema de condução. [5] O sinal elétrico começa no nó sinusal (ou sinoatrial), que fica na parte de cima do átrio direito. [3][5] O nó sinusal é chamado de marca-passo natural do coração. [3][5] Quando ele solta o impulso, os átrios se contraem. [3] Depois o sinal passa por outro ponto, o nó atrioventricular, e segue pelas fibras musculares dos ventrículos, que também se contraem. [3] Nessa sequência, os átrios se contraem primeiro e os ventrículos depois. [3]
 
 ### O ritmo muda ao longo do dia
 
