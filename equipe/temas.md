@@ -9,7 +9,7 @@ Status: `livre` → `em rascunho (data)` → `rascunho pronto (data)` → `publi
 | Quanto tempo a luz do Sol leva para chegar à Terra? | Espaço | NASA, Smithsonian | reprovado (2026-11-10) |
 | Por que a Lua muda de fase? | Espaço | NASA | publicado (2026-11-11) |
 | Como se forma o arco-íris? | Física | NOAA SciJinks, NWS | publicado (2026-11-12) |
-| Por que o gelo flutua na água? | Física | USGS Water Science School | livre |
+| Por que o gelo flutua na água? | Física | USGS Water Science School | rascunho pronto (2026-11-14) |
 | Como o coração bate? | Corpo humano | NHLBI (NIH), MedlinePlus | publicado (2026-11-13) |
 | Como as plantas fazem fotossíntese? | Meio ambiente | NASA, universidade, USDA | livre |
 | O que causa as estações do ano? | Espaço | NASA, NOAA | livre |
