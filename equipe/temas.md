@@ -11,7 +11,7 @@ Status: `livre` → `em rascunho (data)` → `rascunho pronto (data)` → `publi
 | Como se forma o arco-íris? | Física | NOAA SciJinks, NWS | publicado (2026-11-12) |
 | Por que o gelo flutua na água? | Física | USGS Water Science School | publicado (2026-11-14) |
 | Como o coração bate? | Corpo humano | NHLBI (NIH), MedlinePlus | publicado (2026-11-13) |
-| Como as plantas fazem fotossíntese? | Meio ambiente | NASA, universidade, USDA | rascunho pronto (2026-11-15) |
+| Como as plantas fazem fotossíntese? | Meio ambiente | NASA, universidade, USDA | publicado (2026-11-15) |
 | O que causa as estações do ano? | Espaço | NASA, NOAA | livre |
 | Quantos ossos tem o corpo humano? | Corpo humano | MedlinePlus (NIH), hospital universitário | livre |
 | O que é um eclipse? | Espaço | NASA | livre |

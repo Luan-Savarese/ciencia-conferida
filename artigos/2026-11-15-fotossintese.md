@@ -21,11 +21,11 @@ Fotossíntese é o jeito de as plantas fabricarem o próprio alimento. Elas pega
 
 ### O que é fotossíntese?
 
-Fotossíntese é o processo pelo qual plantas verdes, algas e algumas bactérias transformam energia da luz em energia química. [1] Nas plantas, as células pegam gás carbônico do ar e água do solo. [1] Com a luz do Sol, elas transformam esses dois ingredientes em glicose, que é um açúcar, e em oxigênio. [1] Esse processo é essencial para produzir alimento e oxigênio, e sustenta a vida na Terra. [1]
+Fotossíntese é o processo pelo qual plantas verdes, algas e algumas bactérias transformam energia da luz em energia química. [1] Nas plantas, elas pegam gás carbônico do ar e água do solo. [1] Com a luz do Sol, elas transformam esses dois ingredientes em glicose, que é um açúcar, e em oxigênio. [1] Esse processo é essencial para produzir alimento e oxigênio, e sustenta a vida na Terra. [1]
 
 ### Onde acontece?
 
-A fotossíntese acontece principalmente nos cloroplastos das células das plantas. [1] Cloroplastos são estruturas dentro da célula, envolvidas por duas membranas, e são eles que realizam a fotossíntese. [1]
+A fotossíntese acontece principalmente nos cloroplastos das células das plantas. [1] Cloroplastos são estruturas das células das plantas, envolvidas por duas membranas. [1]
 
 ### E a clorofila?
 
@@ -47,4 +47,4 @@ A segunda etapa é a independente de luz, chamada ciclo de Calvin. [1] Ela acont
 
 ## O que ainda não se sabe
 
-Este artigo mostra só o quadro geral, e tem limites. As duas fontes que usamos não explicam por que a clorofila parece verde, não trazem números (como a quantidade de gás carbônico usada ou de açúcar produzida) e não tratam de como o gás entra nas folhas. Por isso nada disso está aqui. A página da Monash University não traz data, e a da NASA trata de como medir a clorofila, não do processo em detalhe.
+Este artigo mostra só o quadro geral, e tem limites. Aqui só entra o que as duas fontes dizem. Não colocamos números, como a quantidade de gás carbônico usada ou de açúcar produzida, nem detalhes além dos que as fontes trazem. A página da Monash University não traz data, e a da NASA trata de como medir a clorofila, não do processo em detalhe.
