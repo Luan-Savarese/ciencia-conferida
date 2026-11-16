@@ -12,7 +12,7 @@ Status: `livre` → `em rascunho (data)` → `rascunho pronto (data)` → `publi
 | Por que o gelo flutua na água? | Física | USGS Water Science School | publicado (2026-11-14) |
 | Como o coração bate? | Corpo humano | NHLBI (NIH), MedlinePlus | publicado (2026-11-13) |
 | Como as plantas fazem fotossíntese? | Meio ambiente | NASA, universidade, USDA | publicado (2026-11-15) |
-| O que causa as estações do ano? | Espaço | NASA, NOAA | rascunho pronto (2026-11-16) |
+| O que causa as estações do ano? | Espaço | NASA, NOAA | publicado (2026-11-16) |
 | Quantos ossos tem o corpo humano? | Corpo humano | MedlinePlus (NIH), hospital universitário | livre |
 | O que é um eclipse? | Espaço | NASA | livre |
 | Como funciona o GPS? | Tecnologia | GPS.gov, NASA | livre |
